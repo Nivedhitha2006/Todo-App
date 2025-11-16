@@ -1,0 +1,178 @@
+/* ===== Global Background ===== */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #5A00FF, #00C6FF);
+    animation: bgMove 12s infinite alternate ease-in-out;
+}
+
+@keyframes bgMove {
+    0% { background-position: left; }
+    100% { background-position: right; }
+}
+
+/* ===== Container ===== */
+.container {
+    width: 450px;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.9s ease-out;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Title ===== */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    animation: popIn 0.7s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Input Section ===== */
+.input-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+#taskInput,
+#taskTime {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+#taskInput:focus,
+#taskTime:focus {
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    transform: scale(1.03);
+}
+
+/* ===== Add Button ===== */
+#addBtn {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00FFB3, #00CC88);
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    overflow: hidden;
+}
+
+#addBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(0,255,200,0.6);
+}
+
+/* ripple effect */
+#addBtn:active::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: rgba(255, 255, 255, 0.6);
+    left: -10%;
+    top: -10%;
+    border-radius: 50%;
+    animation: ripple 0.4s linear;
+}
+
+@keyframes ripple {
+    from { transform: scale(0); opacity: 1; }
+    to { transform: scale(1.5); opacity: 0; }
+}
+
+/* ===== Task List ===== */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+/* Task Item */
+.task {
+    background: rgba(255, 255, 255, 0.20);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.4s ease forwards;
+    transform-origin: top;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.9); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Completed task */
+.task.completed {
+    opacity: 0.6;
+    transform: scale(0.98);
+    text-decoration: line-through;
+    transition: 0.3s;
+}
+
+/* Buttons inside task */
+.buttons button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-left: 7px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.edit {
+    background: #FFD43B;
+}
+
+.edit:hover {
+    transform: scale(1.1);
+}
+
+.save {
+    background: #00FFB3;
+}
+
+.delete {
+    background: #FF4B4B;
+    color: white;
+}
+
+.delete:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255,80,80,0.9);
+}
